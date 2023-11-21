@@ -41,5 +41,11 @@
     </li>
   </ul>
 
+  <div [ngSwitch]="persona.name">
+    <p *ngSwitchCase="'Juan'">Hola Juan</p>
+    <p *ngSwitchCase="'Pedro'">Hola Pedro</p>
+    <p *ngSwitchDefault>Hola desconocido</p>
+  </div>
+
 
 </div>
