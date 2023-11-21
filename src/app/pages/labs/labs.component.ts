@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './labs.component.css'
 })
 export class LabsComponent {
-
+  title = 'Labs';
 }
