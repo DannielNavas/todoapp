@@ -3,3 +3,12 @@
 <h2>{{ 'Hola '.repeat(4) }}</h2>
 <p>la suma de 3 + 3 es {{  3 + 3 }}</p>
 <p>Hola soy {{ name }} y tengo {{ age }}</p>
+<hr />
+<h2>Property binding</h2>
+<img [src]="urlImage" alt="imagen" />
+<input type="text" [value]="name" />
+<button [disabled]="disabled">Click me</button>
+<p>{{ persona.name }}</p>
+<p>{{ persona.age }}</p>
+<p>{{ persona.country }}</p>
+<img [src]="persona.avatar" [alt]="persona.name">
