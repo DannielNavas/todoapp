@@ -10,14 +10,6 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
-        <!-- <li class="completed">
-          <div class="view">
-            <input class="toggle" type="checkbox" checked />
-            <label>Learn JavaScript</label>
-            <button class="destroy"></button>
-          </div>
-          <input class="edit" value="Learn JavaScript" />
-        </li> -->
         <pre>
           <code>
             {{ tasks() | json }}
@@ -46,7 +38,7 @@
     <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
-      <span class="todo-count"><strong>{{ tasks().length }}</strong> item left</span>
+      <span class="todo-count"><strong>{{ tasks().length }}</strong> {{ tasks().length <= 1 ? 'item': 'items' }} left</span>
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
