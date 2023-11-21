@@ -1,14 +1,24 @@
-<p>labs works! {{title}}</p>
-<hr />
-<h2>{{ 'Hola '.repeat(4) }}</h2>
-<p>la suma de 3 + 3 es {{  3 + 3 }}</p>
-<p>Hola soy {{ name }} y tengo {{ age }}</p>
-<hr />
-<h2>Property binding</h2>
-<img [src]="urlImage" alt="imagen" />
-<input type="text" [value]="name" />
-<button [disabled]="disabled">Click me</button>
-<p>{{ persona.name }}</p>
-<p>{{ persona.age }}</p>
-<p>{{ persona.country }}</p>
-<img [src]="persona.avatar" [alt]="persona.name">
+<div class="container">
+  <!-- *ngIf *ngFor *ngSwitchCase *ngSwitchDefault son directivas estructurales que nos permiten modificar el DOM de nuestra aplicación. directivas de accion -->
+
+  <p>labs works! {{title}}</p>
+  <hr />
+  <h2>{{ 'Hola '.repeat(4) }}</h2>
+  <p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
+  <p>Hola soy {{ name }} y tengo {{ age }}</p>
+  <hr />
+  <h2>Property binding</h2>
+  <img [src]="urlImage" alt="imagen" />
+  <input type="text" [value]="name" />
+  <button [disabled]="disabled">Click me</button>
+  <p>{{ persona.name }}</p>
+  <p>{{ persona.age }}</p>
+  <p>{{ persona.country }}</p>
+  <img [src]="persona.avatar" [alt]="persona.name">
+  <hr />
+  <h2>Event binding</h2>
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickHandler()">doble me</button>
+  <p>Change</p>
+  <input type="text" [value]="name" (change)="changeHandler($event)" />
+</div>

@@ -20,4 +20,12 @@ export class LabsComponent {
     country: 'Colombia',
     avatar: 'https://picsum.photos/200/300',
   };
+
+  clickHandler() {
+    alert(`Angular ${this.persona.name}`);
+  }
+
+  changeHandler(event: Event) {
+    console.log(event);
+  }
 }
