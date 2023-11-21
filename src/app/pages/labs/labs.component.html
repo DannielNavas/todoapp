@@ -5,7 +5,7 @@
   <hr />
   <h2>{{ 'Hola '.repeat(4) }}</h2>
   <p>la suma de 3 + 3 es {{ 3 + 3 }}</p>
-  <p>Hola soy {{ name }} y tengo {{ age }}</p>
+  <p>Hola soy {{ name() }} y tengo {{ age }}</p>
   <hr />
   <h2>Property binding</h2>
   <img [src]="urlImage" alt="imagen" />
@@ -23,8 +23,13 @@
   <input type="number" [value]="persona.age" (change)="changeHandler($event)" />
 
   <p>Key down</p>
-  <input type="text" [value]="name" (keydown)="keyDownHandler($event)" />
+  <input type="text" [value]="persona.name" (keydown)="keyDownHandler($event)" />
 
   <p>Key down shift + t</p>
-  <input type="text" [value]="name" (keydown.shift.t)="changeHandler($event)" />
+  <input type="text" [value]="persona.name" (keydown.shift.t)="changeHandler($event)" />
+
+  <h1>Signals</h1>
+  <input type="text" [value]="persona.name" (keydown)="changeHandler($event)" />
+  <p>{{ name() }}</p>
+
 </div>

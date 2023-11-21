@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-labs',
@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class LabsComponent {
   title = 'Labs';
-  name = 'Danniel Navas';
+  name = signal('Danniel Navas');
   age = 33;
   urlImage = 'https://picsum.photos/200/300';
   disabled = true;
@@ -26,7 +26,9 @@ export class LabsComponent {
   }
 
   changeHandler(event: Event) {
-    console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
   }
 
   keyDownHandler(event: KeyboardEvent) {
