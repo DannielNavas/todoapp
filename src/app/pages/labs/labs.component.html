@@ -52,4 +52,12 @@
 
   <p>color: {{ colorControl.value }}</p>
 
+  <svg width="100" height="100">
+    <circle cx="50" cy="50" r="40" [attr.fill]="colorControl.value" />
+  </svg>
+
+  <hr />
+
+  <input type="number" [formControl]="widthCntrl" >
+  <span class="box" [style.width.px]="widthCntrl.value"></span>
 </div>
