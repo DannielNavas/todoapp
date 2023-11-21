@@ -32,4 +32,14 @@
   <input type="text" [value]="persona.name" (keydown)="changeHandler($event)" />
   <p>{{ name() }}</p>
 
+  <h2>Estructura de control</h2>
+
+  <ul>
+    <p>Total de elementos{{ task().length }}</p>
+    <li *ngFor="let item of task(); let i = index">
+      {{ item.name }} - {{ i }}
+    </li>
+  </ul>
+
+
 </div>

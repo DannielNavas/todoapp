@@ -21,6 +21,12 @@ export class LabsComponent {
     avatar: 'https://picsum.photos/200/300',
   };
 
+  task = signal([
+    { name: 'task 1', done: false },
+    { name: 'task 2', done: false },
+    { name: 'task 3', done: false },
+  ]);
+
   clickHandler() {
     alert(`Angular ${this.persona.name}`);
   }
