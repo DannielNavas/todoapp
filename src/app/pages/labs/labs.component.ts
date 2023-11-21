@@ -10,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class LabsComponent {
   title = 'Labs';
+  name = 'Danniel Navas';
+  age = 33;
 }
