@@ -3,7 +3,7 @@
     <div class="container">
       <h1>My Day</h1>
       <p>All my tasks in one place</p>
-      <input class="new-todo" placeholder="Type new todo" autofocus type="text" />
+      <input class="new-todo" placeholder="Type new todo" autofocus type="text" (change)="changeHandler($event)"  />
     </div>
   </header>
   <div class="container todoapp-wrapper">
@@ -18,11 +18,11 @@
           </div>
           <input class="edit" value="Learn JavaScript" />
         </li> -->
-        <li *ngFor="let task of tasks()">
+        <li *ngFor="let task of tasks(); let i = index">
           <div class="view">
             <input class="toggle" type="checkbox" />
             <label>{{ task }}</label>
-            <button class="destroy"></button>
+            <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
           <input class="edit" value="Buy a unicorn" />
         </li>
