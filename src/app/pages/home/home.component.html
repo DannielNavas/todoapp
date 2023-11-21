@@ -18,9 +18,11 @@
           </div>
           <input class="edit" value="Learn JavaScript" />
         </li> -->
-        <li *ngFor="let task of tasks(); let i = index">
+        <li *ngFor="let task of tasks(); let i = index" [ngClass]="{
+          completed: task.completed,
+        }">
           <div class="view">
-            <input class="toggle" type="checkbox" />
+            <input class="toggle" type="checkbox" (click)="toggleTask(i)" [checked]="task.completed" />
             <label>{{ task.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
