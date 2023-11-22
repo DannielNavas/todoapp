@@ -1,6 +1,5 @@
 <div class="container">
   <!-- *ngIf *ngFor *ngSwitchCase *ngSwitchDefault son directivas estructurales que nos permiten modificar el DOM de nuestra aplicación. directivas de accion -->
-
   <p>labs works! {{title}}</p>
   <hr />
   <h2>{{ 'Hola '.repeat(4) }}</h2>
@@ -15,92 +14,92 @@
   <p>{{ persona.age }}</p>
   <p>{{ persona.country }}</p>
   <img [src]="persona.avatar" [alt]="persona.name">
-  <hr />
-  <h2>Event binding</h2>
-  <button (click)="clickHandler()">Click me</button>
-  <button (dblclick)="clickHandler()">doble me</button>
-  <p>Change</p>
-  <input type="number" [value]="persona.age" (change)="changeHandler($event)" />
-
-  <p>Key down</p>
-  <input type="text" [value]="persona.name" (keydown)="keyDownHandler($event)" />
-
-  <p>Key down shift + t</p>
-  <input type="text" [value]="persona.name" (keydown.shift.t)="changeHandler($event)" />
-
-  <h1>Signals</h1>
-  <input type="text" [value]="persona.name" (keydown)="changeHandler($event)" />
-  <p>{{ name() }}</p>
-
-  <h2>Estructura de control</h2>
-
-  <ul>
-    <p>Total de elementos{{ task().length }}</p>
-    <li *ngFor="let item of task(); let i = index">
-      {{ item.name }} - {{ i }}
-    </li>
-  </ul>
-
-  <div [ngSwitch]="persona.name">
-    <p *ngSwitchCase="'Juan'">Hola Juan</p>
-    <p *ngSwitchCase="'Pedro'">Hola Pedro</p>
-    <p *ngSwitchDefault>Hola desconocido</p>
-  </div>
-
-
-  <input type="color" [formControl]="colorControl">
-
-  <p>color: {{ colorControl.value }}</p>
-
-  <svg width="100" height="100">
-    <circle cx="50" cy="50" r="40" [attr.fill]="colorControl.value" />
-  </svg>
-
-  <hr />
-
-  <input type="number" [formControl]="widthCntrl" >
-  <span class="box" [style.width.px]="widthCntrl.value"></span>
-
-  <hr />
-  inpput: <input type="text" [formControl]="nameCntrl" >
-  <span class="message-error" *ngIf="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
-
-  <span class="message-error" [class.show]="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
-
-  <hr />
-
-</div>
-
-@if (persona.name === 'Danniels') {
-  <p>Hola Danniel</p>
-} @else {
-  <p>Hola desconocido</p>
-}
-
-<ul>
-  @for (task of task(); track task; let i = $index) {
-    <li>{{ i }} {{ task?.name }}</li>
-  } @empty {
-    <li>No hay tareas</li>
-  }
-</ul>
-
-<h2>ngSwitch</h2>
-
-<div [ngSwitch]="persona.name">
-  <p *ngSwitchCase="'Juan'">Hola Juan</p>
-  <p *ngSwitchCase="'Pedro'">Hola Pedro</p>
-  <p *ngSwitchDefault>Hola desconocido</p>
-</div>
-
-@switch(persona.name) {
-  @case('Juan') {
-    <p>Hola Juan</p>
-  }
-  @case('Danniel') {
-    <p>Hola Danny</p>
-  }
-  @default {
-    <p>Hola desconocido</p>
-  }
-}
+    <hr />
+    <h2>Event binding</h2>
+    <button (click)="clickHandler()">Click me</button>
+    <button (dblclick)="clickHandler()">doble me</button>
+    <p>Change</p>
+    <input type="number" [value]="persona.age" (change)="changeHandler($event)" />
+    <p>Key down</p>
+    <input type="text" [value]="persona.name" (keydown)="keyDownHandler($event)" />
+    <p>Key down shift + t</p>
+    <input type="text" [value]="persona.name" (keydown.shift.t)="changeHandler($event)" />
+    <h1>Signals</h1>
+    <input type="text" [value]="persona.name" (keydown)="changeHandler($event)" />
+    <p>{{ name() }}</p>
+    <h2>Estructura de control</h2>
+    <ul>
+      <p>Total de elementos{{ task().length }}</p>
+      @for (item of task(); track item; let i = $index) {
+        <li>
+          {{ item.name }} - {{ i }}
+        </li>
+      }
+    </ul>
+    <div>
+      @switch (persona.name) {
+        @case ('Juan') {
+          <p>Hola Juan</p>
+        }
+        @case ('Pedro') {
+          <p>Hola Pedro</p>
+        }
+        @default {
+          <p>Hola desconocido</p>
+        }
+      }
+    </div>
+    <input type="color" [formControl]="colorControl">
+      <p>color: {{ colorControl.value }}</p>
+      <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" [attr.fill]="colorControl.value" />
+      </svg>
+      <hr />
+      <input type="number" [formControl]="widthCntrl" >
+        <span class="box" [style.width.px]="widthCntrl.value"></span>
+        <hr />
+        inpput: <input type="text" [formControl]="nameCntrl" >
+        @if (nameCntrl.invalid && nameCntrl.touched) {
+          <span class="message-error">Nombre invalido</span>
+        }
+        <span class="message-error" [class.show]="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
+        <hr />
+      </div>
+      @if (persona.name === 'Danniels') {
+        <p>Hola Danniel</p>
+      } @else {
+        <p>Hola desconocido</p>
+      }
+      <ul>
+        @for (task of task(); track task; let i = $index) {
+          <li>{{ i }} {{ task?.name }}</li>
+          } @empty {
+          <li>No hay tareas</li>
+        }
+      </ul>
+      <h2>ngSwitch</h2>
+      <div>
+        @switch (persona.name) {
+          @case ('Juan') {
+            <p>Hola Juan</p>
+          }
+          @case ('Pedro') {
+            <p>Hola Pedro</p>
+          }
+          @default {
+            <p>Hola desconocido</p>
+          }
+        }
+      </div>
+      @switch(persona.name) {
+        @case('Juan') {
+          <p>Hola Juan</p>
+        }
+        @case('Danniel') {
+          <p>Hola Danny</p>
+        }
+        @default {
+          <p>Hola desconocido</p>
+        }
+      }
+      
