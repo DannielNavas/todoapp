@@ -1,8 +1,23 @@
 .container {
-    padding: 3rem;
+  padding: 3rem;
 }
+
 .box {
   height: 10px;
   display: block;
   background-color: red;
+}
+
+.message-error {
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+}
+
+.message-error.show {
+  opacity: 1;
+  transition: all linear 0.5s;
 }

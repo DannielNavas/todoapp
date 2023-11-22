@@ -60,4 +60,10 @@
 
   <input type="number" [formControl]="widthCntrl" >
   <span class="box" [style.width.px]="widthCntrl.value"></span>
+
+  <hr />
+  inpput: <input type="text" [formControl]="nameCntrl" >
+  <span class="message-error" *ngIf="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
+
+  <span class="message-error" [class.show]="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
 </div>
