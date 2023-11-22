@@ -76,3 +76,31 @@
 } @else {
   <p>Hola desconocido</p>
 }
+
+<ul>
+  @for (task of task(); track task; let i = $index) {
+    <li>{{ i }} {{ task?.name }}</li>
+  } @empty {
+    <li>No hay tareas</li>
+  }
+</ul>
+
+<h2>ngSwitch</h2>
+
+<div [ngSwitch]="persona.name">
+  <p *ngSwitchCase="'Juan'">Hola Juan</p>
+  <p *ngSwitchCase="'Pedro'">Hola Pedro</p>
+  <p *ngSwitchDefault>Hola desconocido</p>
+</div>
+
+@switch(persona.name) {
+  @case('Juan') {
+    <p>Hola Juan</p>
+  }
+  @case('Danniel') {
+    <p>Hola Danny</p>
+  }
+  @default {
+    <p>Hola desconocido</p>
+  }
+}
