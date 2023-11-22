@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-      const tasks = localStorage.getItem('tasks');
+    const tasks = localStorage.getItem('tasks');
     if (tasks) this.tasks.set(JSON.parse(tasks));
     this.trackTask();
   }
