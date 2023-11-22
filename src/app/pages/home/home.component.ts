@@ -30,10 +30,7 @@ export class HomeComponent {
   ]);
 
   newTaskCtrl = new FormControl('', {
-    validators: [
-      Validators.required,
-      Validators.minLength(4),
-    ],
+    validators: [Validators.required, Validators.minLength(4)],
     nonNullable: true,
   });
 
@@ -71,6 +68,24 @@ export class HomeComponent {
     this.tasks.update((tasks) =>
       tasks.map((task, i) =>
         i === index ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+
+  updateTaskEditingMode(index: number) {
+    this.tasks.update((tasks) =>
+      tasks.map((task, i) =>
+        i === index ? { ...task, editing: true } : { ...task, editing: false }
+      )
+    );
+  }
+
+  updateTaskText(index: number, event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.tasks.update((tasks) =>
+      tasks.map((task, i) =>
+        i === index ? { ...task, title: newValue, editing: false } : task
       )
     );
   }
