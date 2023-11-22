@@ -15,9 +15,7 @@
             {{ tasks() | json }}
           </code>
         </pre> -->
-        <li *ngFor="let task of tasks(); let i = index" [ngClass]="{
-          completed: task.completed,
-        }">
+        <li *ngFor="let task of tasks(); let i = index" [class.completed]="task.completed">
           <div class="view">
             <input class="toggle" type="checkbox" (change)="toggleTask(i)" [checked]="task.completed" />
             <label>{{ task.title }}</label>
