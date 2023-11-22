@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, Injector, OnInit, computed, effect, inject, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task } from '../../models/task.model';
 
@@ -11,27 +11,12 @@ export type Filter = 'all' | 'pending' | 'completed';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
-  tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Task 1',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Task 2',
-      completed: false,
-    },
-    {
-      id: Date.now(),
-      title: 'Task 3',
-      completed: false,
-    },
-  ]);
+export class HomeComponent implements OnInit {
+  tasks = signal<Task[]>([]);
 
   filter = signal<Filter>('all');
 
+  // Retorna un nuevo valor cada vez que cambia el valor de tasks o filter (reactividad)
   taskByFilter = computed(() => {
     const filter = this.filter();
     const tasks = this.tasks();
@@ -45,8 +30,29 @@ export class HomeComponent {
     validators: [Validators.required, Validators.minLength(4)],
     nonNullable: true,
   });
+  injector = inject(Injector);
 
-  constructor() {}
+  constructor() {
+    // El effect de signals no retorna
+    // El effect de signals se ejecuta cada vez que cambia el valor de la señal
+    // effect(() => {
+    //   const tasks = this.tasks();
+    //   localStorage.setItem('tasks', JSON.stringify(tasks));
+    // });
+  }
+
+  ngOnInit() {
+      const tasks = localStorage.getItem('tasks');
+    if (tasks) this.tasks.set(JSON.parse(tasks));
+    this.trackTask();
+  }
+
+  trackTask() {
+    effect(() => {
+      const tasks = this.tasks();
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, {injector: this.injector});
+  }
 
   // changeHandler(event: Event) {
   //   const input = event.target as HTMLInputElement;
