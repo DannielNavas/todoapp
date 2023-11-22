@@ -66,4 +66,13 @@
   <span class="message-error" *ngIf="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
 
   <span class="message-error" [class.show]="nameCntrl.invalid && nameCntrl.touched">Nombre invalido</span>
+
+  <hr />
+
 </div>
+
+@if (persona.name === 'Danniels') {
+  <p>Hola Danniel</p>
+} @else {
+  <p>Hola desconocido</p>
+}
